@@ -9,11 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var display: UILabel!
+    
+    var userIsInTheMiddleOfTyping = false
+    
+    @IBAction func touchDigit(_ sender: UIButton) {
+        let digit = sender.currentTitle!
+        if userIsInTheMiddleOfTyping {
+            let textCurrentlyInDisply = display.text!
+            display.text = textCurrentlyInDisply + digit
+        } else {
+            display!.text = digit
+        }
+        userIsInTheMiddleOfTyping = true
     }
-
+    
 
 }
 
